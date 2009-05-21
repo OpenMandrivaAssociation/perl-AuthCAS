@@ -1,5 +1,5 @@
 %define module   AuthCAS
-%define version    1.3
+%define version    1.3.1
 %define release    %mkrel 1
 
 Name:       perl-%{module}
@@ -10,8 +10,6 @@ Group:      Development/Perl
 Summary:    Client library for CAS 2.0 authentication server
 Url:        http://search.cpan.org/dist/%{module}
 Source:     http://www.cpan.org/modules/by-module//%{module}-%{version}.tar.gz
-Patch:      AuthCAS-1.3-workaround-stricture.patch
-BuildRequires: perl-devel
 BuildRequires: perl(IO::Socket::SSL)
 BuildRequires: perl(LWP::UserAgent)
 BuildArch: noarch
@@ -24,7 +22,6 @@ AuthCAS is a full object-oriented library.
 
 %prep
 %setup -q -n %{module}-%{version} 
-%patch -p 1
 rm -f t/pod-coverage.t
 
 %build
