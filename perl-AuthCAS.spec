@@ -1,19 +1,20 @@
-%define module   AuthCAS
-%define version    1.3.1
-%define release    %mkrel 1
+%define upstream_name    AuthCAS
+%define upstream_version 1.4
 
-Name:       perl-%{module}
-Version:    %{version}
-Release:    %{release}
-License:    GPL or Artistic
-Group:      Development/Perl
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:    Client library for CAS 2.0 authentication server
-Url:        http://search.cpan.org/dist/%{module}
-Source:     http://www.cpan.org/modules/by-module//%{module}-%{version}.tar.gz
+License:    GPL+ or Artistic
+Group:      Development/Perl
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/%{upstream_name}-%{upstream_version}.tar.gz
+
 BuildRequires: perl(IO::Socket::SSL)
 BuildRequires: perl(LWP::UserAgent)
 BuildArch: noarch
-BuildRoot:  %{_tmppath}/%{name}-%{version}
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 AuthCAS aims at providing a Perl API to Yale's Central Authentication
@@ -21,7 +22,7 @@ System (CAS). Only a basic Perl library is provided with CAS whereas
 AuthCAS is a full object-oriented library.
 
 %prep
-%setup -q -n %{module}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 rm -f t/pod-coverage.t
 
 %build
@@ -43,5 +44,4 @@ rm -rf %buildroot
 %doc Changes README
 %{_mandir}/man3/*
 %perl_vendorlib/*
-
 
