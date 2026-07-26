@@ -1,15 +1,13 @@
 %define upstream_name    AuthCAS
-%define upstream_version 1.7
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	1
+Version:	1.7
+Release:	2
 
 Summary:	Client library for CAS 2.0 authentication server
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://sourcesup.renater.fr/projects/perlcas
-Source0:	https://cpan.metacpan.org/authors/id/O/OS/OSALAUN/AuthCAS-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/O/OS/OSALAUN/AuthCAS-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -23,7 +21,7 @@ System (CAS). Only a basic Perl library is provided with CAS whereas
 AuthCAS is a full object-oriented library.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 rm -f t/pod-coverage.t
 
 %build
@@ -49,8 +47,7 @@ make test
 * Sun Jul 12 2009 Jérôme Quelin <jquelin@mandriva.org> 1.400.0-1mdv2011.0
 + Revision: 395063
 - update to 1.4
-- using %%perl_convert_version
-- fixed license field
+- using %1.7 fixed license field
 
 * Thu May 21 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.3.1-1mdv2010.0
 + Revision: 378430
